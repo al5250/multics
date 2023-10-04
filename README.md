@@ -11,6 +11,6 @@ model = MultiTaskCompSens(mode="clustered", alg="em", num_clusters=2)
 ```
 There are two main parameters for this object (see our paper for more details):
 - `mode`: This determines the type of model to use.  Options include `separate` (i.e. not sharing any information between CS tasks), `joint` (i.e. sharing information between all CS tasks), and `clustered` (i.e. automatically learning and sharing information between clusters of tasks).  If the `clustered` option is used, you also need to specify an additional argument `num_clusters`.  
-- `alg`: This determines the type of algorithm to use.  Options are `em` (i.e. the original expectation-maximization algorithm) and `cofem` (i.e. the acceelerated, covariance-free version of EM proposed in our paper).
+- `alg`: This determines the type of algorithm to use.  Options are `em` (i.e. the original expectation-maximization algorithm) and `cofem` (i.e. the acceelerated, covariance-free version of EM proposed in our paper).  If using `cofem`, there are also additional required parameters: `num_probes` and `cg_tol`.
 
 After instantiating the object, the `model.fit` function can be used to run the inference algorithm and solve the CS tasks.  For a full example of how to use this function, see the `time.py` script file.  You can also use this script to reproduce the results in our paper.
